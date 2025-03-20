@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guesser</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/preset.css">
+    <link rel="stylesheet" href="src/css/main.css">
+
+</head>
+
+<body>
+    <img src="src/images/background.jpg" alt="">
+    <main>
+        <h1>Number Guesser</h1>
+
+        <p id="subtitle">Try guess the number between <span id="min-number"></span> and <span id="max-number"></span> </p>
+
+        <section id="start">
+            <button id="btn-start">Start Game</button>
+        </section>
+
+        <section id="guessing">
+            <div class="input-guess">
+                <label for="guess">Make your guess:</label>
+                <input type="number" name="guess" id="guess" min="1" max="100" placeholder="Type your guess here...">
+
+                <button id="btn-guess">Guess</button>
+
+                <button id="btn-reset">Reset</button>
+            </div>
+
+            <div class="attempts">
+                <p id="result-message"></p>
+                <p id="attempts-message"> Attempts : <span id="attempts-count">0</span> </p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+
+    </footer>
+</body>
+</html>

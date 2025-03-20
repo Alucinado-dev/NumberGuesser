@@ -1,0 +1,40 @@
+
+:root{
+    /* color pallete */
+
+    --blue: #00bfff;
+    --purple: #800080;
+    --neon-green: #39ff14;
+    --neon-pink: #ff1493;
+    --neon-blue: #00ffff;
+    --neon-cyan: #00fa9a;
+    --neon-purple: #ff00ff;
+    --neon-yellow: #ffff00;
+    --neon-orange: #ffa500;
+    --neon-red: #ff0000;
+
+    
+}
+
+
+
+body{
+    /* background: url(/src/images/background.jpg)  no-repeat center; */
+    /* background-size: cover; */
+    /* background-attachment: fixed; */
+    height: 100vh;
+    width: 100vw;
+}
+
+body>img{  
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.2) ;
+}
+
+    
