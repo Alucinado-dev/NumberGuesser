@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    <img src="src/images/background.jpg" alt="">
+
     <main>
         <h1>Number Guesser</h1>
 
-        <p id="subtitle">Try guess the number between <span id="min-number"></span> and <span id="max-number"></span> </p>
+        <p id="subtitle">Try guess the number between <span id="min-number"></span> and <span id="max-number"></span> in <span id="attempts-limit"></span> attempts.</p>
 
         <section id="start">
             <button id="btn-start">Start Game</button>
@@ -35,8 +35,42 @@
             </div>
 
             <div class="attempts">
-                <p id="result-message"></p>
                 <p id="attempts-message"> Attempts : <span id="attempts-count">0</span> </p>
+
+                <ul id="results-list">
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is <span id="above-or-bellow">bellow</span> the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+                    <li>
+                        <p class="result-message"> wrong guess! <span class="guessed-number"></span> is above the secret number! </p>
+                    </li>
+
+
+                </ul>
             </div>
         </section>
     </main>

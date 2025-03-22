@@ -4,14 +4,32 @@
 
     --blue: #00bfff;
     --purple: #800080;
-    --neon-green: #39ff14;
     --neon-pink: #ff1493;
-    --neon-blue: #00ffff;
-    --neon-cyan: #00fa9a;
     --neon-purple: #ff00ff;
+    --neon-violet: #ee82ee;
+
+
+    --neon-green: #00FF00;
+    --neon-cyan: #00fa9a;
+    --neon-blue: #00ffff;
     --neon-yellow: #ffff00;
     --neon-orange: #ffa500;
     --neon-red: #ff0000;
+
+    --red-orange: linear-gradient(0deg, var(--neon-red), var(--neon-orange));
+    --orange-yellow: linear-gradient(0deg, var(--neon-orange), var(--neon-yellow));
+    --yellow-blue: linear-gradient(0deg,  var(--neon-yellow) , var(--neon-blue));
+    --blue-cyan: linear-gradient(0deg, var(--neon-blue), var(--neon-cyan));
+    --cyan-green: linear-gradient(0deg, var(--neon-cyan), var(--neon-green));
+    
+    --shadow-for-red-orange: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-red);
+    --shadow-for-orange-yellow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-orange);
+    --shadow-for-yellow-blue: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-yellow);
+    --shadow-for-blue-cyan: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-blue);
+    --shadow-for-cyan-green: 0 0 10px var(--neon-green), 0 0 20px var(--neon-cyan);
+    
+    
+
 
     
 }
@@ -19,22 +37,13 @@
 
 
 body{
-    /* background: url(/src/images/background.jpg)  no-repeat center; */
-    /* background-size: cover; */
-    /* background-attachment: fixed; */
+    background: url(/src/images/background.jpg)  no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
     height: 100vh;
     width: 100vw;
+    backdrop-filter: brightness(0.5);
 }
 
-body>img{  
-    object-fit: cover;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: brightness(0.2) ;
-}
 
     

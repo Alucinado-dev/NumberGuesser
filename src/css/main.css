@@ -1,21 +1,21 @@
 main{
-    padding: 6rem;
+    padding: 4rem;
 }
 
 h1{
     width: 100%;
     text-align: center;
     font-size: 6.4rem;
-    margin: 4rem 0;
+    margin: 2rem 0;
     padding: 1rem auto;
     color: var(--blue);
     text-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue);
 }
 
 #subtitle{
-    font-size: 4.8rem;
+    font-size: 3.6rem;
     color: var(--neon-yellow);
-    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue);
     width: 100%;
     text-align: center;
     padding: 1rem auto;
@@ -68,20 +68,165 @@ h1{
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-    padding: 4rem;
+    padding: 2.5rem 4rem;
     border-radius: 3rem;
-    background-color: rgba(0,  0, 0, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
-    transition: all 300ms ease-in-out;
-    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+    border: 2px solid var(--neon-purple);
 }
 
 #guessing .input-guess label{
     color: var(--neon-purple);
     font-size: 3.2rem;
-    text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
-    
-
+    text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-pink);
 }
 
+#guessing .input-guess #guess{
+    width: 80%;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--purple);
+    background-color: transparent;
+    color: white;
+    font-size: 1.6rem;
+    text-align: center;
+    outline: none;
+    transition: all 300ms ease-in-out;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    &::placeholder{
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+
+    &:focus, &:hover{
+        box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
+    }
+}
+
+#guessing .input-guess #btn-guess{
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--neon-cyan);
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 100ms ease-in-out;
+    box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+
+    &:hover{
+        background: var(--neon-cyan);
+        color: black;
+        box-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green);
+        transform: scale(1.1);
+    }
+
+    &:active{
+        background: var(--neon-cyan);
+        color: black;
+        box-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+        transform: scale(0.9);
+    }
+}
+
+#guessing .input-guess #btn-reset{
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--neon-violet);
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 2px solid var(--neon-violet);
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 100ms ease-in-out;
+    box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+
+    &:hover{
+        background: var(--neon-violet);
+        color: black;
+        box-shadow: 0 0 15px var(--neon-red), 0 0 30px var(--neon-red);
+        transform: scale(1.1);
+    }
+
+    &:active{
+        background: var(--neon-violet);
+        color: black;
+        box-shadow: 0 0 5px var(--neon-red), 0 0 10px var(--neon-red);
+        transform: scale(0.9);
+    }
+}
+
+#guessing .attempts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem;
+    border-radius: 3rem;
+    box-shadow: 0 0 10px white, 0 0 20px white;
+    border: 2px solid #888888;
+}
+
+#guessing .attempts #attempts-message{
+    color: var(--neon-green);
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+    text-align: center;
+}
+
+#guessing .attempts #results-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 100px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 1rem;
+    
+
+
+    &::-webkit-scrollbar{
+        width: 10px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        background-color: var(--neon-pink);
+        border-radius: 10px;
+    }
+}
+
+
+#guessing .attempts #results-list .result-message{
+    --color-result: var(--red-orange);
+    --shadow-result: var(--shadow-for-red-orange);
+    background-image: var(--color-result) ;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    -webkit-background-clip: text; /* old browsers compatibility */
+    -moz-background-clip: text; /* old browsers compatibility */
+    background-clip: text;
+    font-size: 1.6rem;
+    text-shadow: var(--shadow-result);
+    padding: 0.5rem;
+    border-radius: 1rem;
+
+    width: 100%;
+    text-align: center;
+}
