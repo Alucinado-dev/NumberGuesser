@@ -18,10 +18,17 @@
     <main>
         <h1>Number Guesser</h1>
 
-        <p id="subtitle">Try guess the number between <span id="min-number"></span> and <span id="max-number"></span> in <span id="attempts-limit"></span> attempts.</p>
+        <p id="subtitle">Try guess <span id="difficulty"></span> number between <span id="min-number"></span> and <span id="max-number"></span> in <span id="attempts-limit"></span> attempts.</p>
 
         <section id="start">
             <button id="btn-start">Start Game</button>
+            <div id="levels-group">
+                <button class="level active" id="level-easy"> Easy</button>
+                <button class="level" id="level-medium">Medium</button>
+                <button class="level" id="level-hard">Hard</button>
+                <button class="level" id="level-expert">Expert</button>
+                <button class="level" id="level-supreme">Supreme</button>
+            </div>
         </section>
 
         <section id="guessing">
@@ -75,8 +82,12 @@
         </section>
     </main>
     
+
     <footer>
 
     </footer>
+
+    <script src="js/functions.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
