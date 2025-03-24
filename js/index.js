@@ -20,7 +20,7 @@
 
 
 
-/* toggle between buttons on which one has the class active (easy is the default) */
+/* toggle between buttons on which one has the class active */
 const buttonLevels = document.querySelectorAll('.level');
 buttonLevels.forEach(button =>{
     button.addEventListener('click', () =>{
@@ -30,12 +30,20 @@ buttonLevels.forEach(button =>{
     })
 })
 
+/* as windows loads, runs levelSelector() in easy mode as default, active is in easy as default in index.HTML */
 window.addEventListener('load', () => {
     let level = levelSelector();
 })
 
+/* defines what happens when the start button is clicked */
 const startButton = document.getElementById('btn-start');
 startButton.addEventListener('click', () => {
+    
+    /* awaits 1500 ms to make the transition to the game  */
+    setTimeout(() => {
+        
+    }, 1500);
+
     const start = document.getElementById('start');
     start.style.display = 'none';
 

@@ -1,8 +1,24 @@
-
-
 /* generates a random number between min and max (min and max  included)  */
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+/* fills empty spaces on the subtitle with the informations about the game level chosen */
+function setDifficultyToSubtitle(difficulty, min, max, numberOfAttempts){
+    const difficultyPlace = document.getElementById('difficulty');
+    const minPlace = document.getElementById('min-number');
+    const maxPlace = document.getElementById('max-number');
+    const attemptsPlace = document.getElementById('attempts-limit');
+    
+    difficultyPlace.textContent = difficulty;
+    minPlace.textContent = min;
+    maxPlace.textContent = max;
+    attemptsPlace.textContent = numberOfAttempts;   
+}
+
+/* verifies if the button selected has the class active */
+function isActive(button) {
+    return button.classList.contains('active');
 }
 
 /* receives an array with  [dificulty, min, max, numberOfAttempts] */
@@ -47,20 +63,5 @@ function levelSelector(){
     } 
 }
 
-function setDifficultyToSubtitle(difficulty, min, max, numberOfAttempts){
-    const difficultyPlace = document.getElementById('difficulty');
-    const minPlace = document.getElementById('min-number');
-    const maxPlace = document.getElementById('max-number');
-    const attemptsPlace = document.getElementById('attempts-limit');
-    
-    difficultyPlace.textContent = difficulty;
-    minPlace.textContent = min;
-    maxPlace.textContent = max;
-    attemptsPlace.textContent = numberOfAttempts;   
-}
 
-/* verifies if the button selected has the class active */
-function isActive(button) {
-    return button.classList.contains('active');
-}
 
