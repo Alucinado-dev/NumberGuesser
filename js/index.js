@@ -19,6 +19,52 @@
 */
 
 
+let level = [null, null, null, null]; /* declaring a variable level which will receive an array of information about what level the game should start 
+                     it initializes as null in order to verify if  it will be receiving values on the current code 
+                     as windows loads, runs levelSelector() in easy mode as default, active is in easy as default in index.HTML 
+                    */
+
+/* defines what happens when the start button is clicked */
+const startButton = document.getElementById('btn-start');
+startButton.addEventListener('click', () => {
+    
+    /* hides the start section and shows the guessing section */
+    const start = document.getElementById('start');
+    start.style.display = 'none';
+    const guessing = document.getElementById('guessing');
+    guessing.style.display = 'flex';
+    
+    /* as a default config, the levelSelector() returns easy mode when the page loads */
+    level = levelSelector();
+
+    /* verifies if level was correctly defined */
+    if(!level){
+        /* error */
+        alert('Error: level not defined');
+        return;
+    }
+
+    /* destructuring level */
+    let [, min, max, numberOfAttempts] = level;
+
+    const secretNumber = randomNumber(min, max);
+    console.log(secretNumber);
+
+    /* stores the secretNumber in level  */
+    level.push(secretNumber);
+    console.log(level);
+
+     /* the start button defines the level parameters but the game only starts when the guess btn is clicked */
+    const guessButton = document.getElementById('btn-guess');
+    guessButton.addEventListener('click', () => {
+        game(level);
+        numberOfAttempts--;
+        console.log(numberOfAttempts);
+    });
+    
+
+
+}); 
 
 /* toggle between buttons on which one has the class active */
 const buttonLevels = document.querySelectorAll('.level');
@@ -26,30 +72,14 @@ buttonLevels.forEach(button =>{
     button.addEventListener('click', () =>{
         buttonLevels.forEach(button =>{ button.classList.remove('active'); }) /* removes the class active of every button level */
         button.classList.add('active'); /* adds the class active to the clicked buttons */
-        let level = levelSelector();
     })
 })
 
-/* as windows loads, runs levelSelector() in easy mode as default, active is in easy as default in index.HTML */
-window.addEventListener('load', () => {
-    let level = levelSelector();
-})
 
-/* defines what happens when the start button is clicked */
-const startButton = document.getElementById('btn-start');
-startButton.addEventListener('click', () => {
-    
-    /* awaits 1500 ms to make the transition to the game  */
-    setTimeout(() => {
-        
-    }, 1500);
+const resetButton = document.getElementById('btn-reset');
+resetButton.addEventListener('click', () => {
+    reset();
 
-    const start = document.getElementById('start');
-    start.style.display = 'none';
-
-    const guessing = document.getElementById('guessing');
-    guessing.style.display = 'flex';
-    
-})
+});
 
 

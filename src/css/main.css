@@ -77,6 +77,7 @@ h1{
     }
 }
 
+
 #guessing{
     display: none;
     justify-content: center;
@@ -234,9 +235,6 @@ h1{
 
 
 #guessing .attempts #results-list .result-message{
-    --color-result: var(--red-orange);
-    --shadow-result: var(--shadow-for-red-orange);
-    background-image: var(--color-result) ;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -251,4 +249,56 @@ h1{
 
     width: 100%;
     text-align: center;
+}
+
+
+/* endgame alert */
+
+#endgame-alert{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 4rem;
+    border-radius: 2rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px black;
+    z-index: 10;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#endgame-alert #endgame-title{
+    font-size: 3.2rem;
+    margin: 1rem 0;
+}
+
+#endgame-alert #endgame-image{
+    width: 200px;
+    height: 200px;
+}
+
+#endgame-alert #endgame-message{
+    font-size: 1.6rem;
+    text-align: center;
+    color: white;
+}
+
+#endgame-alert #endgame-button{
+    color: black;
+    font-size: 1.8rem;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+    &:hover, &:focus{
+        transform: scale(1.05);
+        outline: none;
+    }
 }
