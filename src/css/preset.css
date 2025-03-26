@@ -17,16 +17,16 @@
     --neon-red: #ff0000;
 
     --red-orange: linear-gradient(0deg, var(--neon-red), var(--neon-orange));
-    --orange-yellow: linear-gradient(0deg, var(--neon-orange), var(--neon-yellow));
-    --yellow-blue: linear-gradient(0deg,  var(--neon-yellow) , var(--neon-blue));
-    --blue-cyan: linear-gradient(0deg, var(--neon-blue), var(--neon-cyan));
+    --orange-yellow: linear-gradient(0deg, var(--neon-orange) 50%, var(--neon-yellow) 100%);
+    --yellow-blue: linear-gradient(0deg,  var(--neon-yellow) 0%, var(--neon-blue) 80%);
+    --blue-cyan: linear-gradient(0deg, var(--neon-blue) 0%, var(--neon-cyan) 50%);
     --cyan-green: linear-gradient(0deg, var(--neon-cyan), var(--neon-green));
     
-    --shadow-for-red-orange: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-red);
-    --shadow-for-orange-yellow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-orange);
-    --shadow-for-yellow-blue: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-yellow);
-    --shadow-for-blue-cyan: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-blue);
-    --shadow-for-cyan-green: 0 0 10px var(--neon-green), 0 0 20px var(--neon-cyan);
+    --shadow-for-red-orange: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-red);
+    --shadow-for-orange-yellow: 0 0 5px var(--neon-yellow), 0 0 10px var(--neon-orange);
+    --shadow-for-yellow-blue: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-yellow);
+    --shadow-for-blue-cyan: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-blue);
+    --shadow-for-cyan-green: 0 0 5px var(--neon-green), 0 0 10px var(--neon-cyan);
     
     
 

@@ -2,6 +2,7 @@
 function hideCustomAlert() {
     const alert = document.getElementById('endgame-alert');
     alert.style.display = 'none';
+    reset();
 }
 
 /* shows a customized alert with title image text sound and button */
@@ -38,6 +39,15 @@ function showCustomAlert(title, imageSource, text, buttonContent, buttonColor, s
     }
 
     alertButton.addEventListener('click', () => hideCustomAlert());
+    /* faça com que o hide tbm seja chamado quando se clica fora do container */
+    
+    alert.addEventListener('click', (event) => {
+        if (!(event.target === alert)) {
+            hideCustomAlert();
+        }
+    });
+    
+    console.log('isso será mostrado quando a showcustom alert for chamada')
 }
 
 /* generates a random number between min and max (min and max  included)  */
@@ -54,10 +64,14 @@ function setDifficultyToSubtitle(difficulty, min, max, numberOfAttempts){
     const maxPlace = document.getElementById('max-number');
     const attemptsPlace = document.getElementById('attempts-limit');
     
+
     difficultyPlace.textContent = difficulty;
     minPlace.textContent = min;
     maxPlace.textContent = max;
     attemptsPlace.textContent = numberOfAttempts;   
+
+    const subtitle = document.getElementById('subtitle');
+    subtitle.style.opacity = '1';
 }
 
 /* verifies if the button selected has the class active */
@@ -129,9 +143,12 @@ function reset(){
     const guessing = document.getElementById('guessing');
     guessing.style.display = 'none';
 
-    level = null;
-    attemptsLeft = null;
+    level = [null, null, null, null];
+    attemptsLeft = 0;
     secretNumber = null;
+    displayAttemptsLeft(attemptsLeft);
+    
+    console.log('isso será mostrado quando o reset for chamado');
 }
 
 
@@ -148,10 +165,11 @@ function getGuessedNumber(min, max){
             console.log(`o input é : ${inputNumber} dentro da function getGuessedNumber`);
             return inputNumber;
         }   
+    } else{
+        alert('Invalid input, please enter a number');
+        reset();
     }
-    /* as the function returns if isANumber is true, there's no need of else conditional */
-    alert('Invalid input, please enter a number');
-    reset();
+    
 }
 
 /* defines the routine when the player wins the game */
@@ -168,17 +186,17 @@ function choosecolor(distance){
     }
 
     if (distance > 100 ){
-        const colorAndShadow = ['var(--orange-yellow)', 'var(--shadow-for---orange-yellow)'];
+        const colorAndShadow = ['var(--orange-yellow)', 'var(--shadow-for-orange-yellow)'];
         return colorAndShadow
     } 
     
     if (distance > 50){
-        const colorAndShadow = ['var(----yellow-blue)', 'var(--shadow-for-yellow-blue)'];
+        const colorAndShadow = ['var(--yellow-blue)', 'var(--shadow-for-yellow-blue)'];
         return colorAndShadow
     }
     
     if (distance > 10){
-        const colorAndShadow = ['var(----blue-cyan)', 'var(--shadow-for-blue-cyan)'];
+        const colorAndShadow = ['var(--blue-cyan)', 'var(--shadow-for-blue-cyan)'];
         return colorAndShadow
     }
     
@@ -197,41 +215,63 @@ function showFeedbackMessage(feedback, distance, guessedNumber ){
     resultsList.appendChild(newLi);
     /* chooses the color for the text of the attempt */
     const [color, shadow] = choosecolor(distance);
-    newLi.style.backgroundImage = color;
-    newLi.style.boxShadow = shadow;
+ 
+    
+    const feedbackMessage = newLi.querySelector('p');
+    feedbackMessage.style.backgroundImage = color;
+    feedbackMessage.style.textShadow = shadow;
+    
+
 }
 
-
+/* defines the routine when player loses the game */
 function gameLost(secretNumber){
-    showCustomAlert('YOU LOST', 'src/images/wrong',`you're out of attempts, the secret number was ${secretNumber}.`, 'TRY AGAIN', 'var(--neon-red)', false);
-    reset();
+    showCustomAlert('YOU LOST', 'src/images/wrong.jpg',`you're out of attempts, the secret number was ${secretNumber}.`, 'TRY AGAIN', 'var(--neon-red)', false);
+    console.log('isso será mostrado quando o player perder')
+ 
 }
 
 
 /* compares the input with the secret number */
 function game([difficulty, min, max, attemptsLeft, secretNumber]) {
     const guessedNumber = getGuessedNumber(min, max);
-    
+
+    console.log(` 
+        nivel : ${difficulty}
+        minimo : ${min}
+        maximo : ${max}
+        tentativas : ${attemptsLeft}
+        numero secreto : ${secretNumber}
+        `)
     if (secretNumber !== guessedNumber){
         
         if(attemptsLeft === 0){
+            console.log('isso será mostrando quando sobrar 0 tentativas')
             gameLost(secretNumber);
             return;
+           
         }
 
         if (secretNumber > guessedNumber){
-            const distance = secretNumber - guessedNumber
-            showFeedbackMessage('above', distance, guessedNumber);
+            const distance = secretNumber - guessedNumber;
+            showFeedbackMessage('below', distance, guessedNumber);
         }
 
         if (secretNumber < guessedNumber){
             const distance = guessedNumber - secretNumber;
-            showFeedbackMessage('below', distance, guessedNumber);
+            showFeedbackMessage('above', distance, guessedNumber);
         }
         
     } else {
         gameWin(difficulty, secretNumber);
+        return;
     }
 
 }
+
+function displayAttemptsLeft(attemptsLeft){
+    const attemptsCount = document.getElementById('attempts-count');
+    attemptsCount.textContent = attemptsLeft;
+}
+
 

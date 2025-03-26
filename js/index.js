@@ -45,9 +45,9 @@ startButton.addEventListener('click', () => {
     }
 
     /* destructuring level */
-    let [, min, max, numberOfAttempts] = level;
+    let [, min, max,] = level;
 
-    const secretNumber = randomNumber(min, max);
+    const secretNumber = Number(randomNumber(min, max));
     console.log(secretNumber);
 
     /* stores the secretNumber in level  */
@@ -57,9 +57,11 @@ startButton.addEventListener('click', () => {
      /* the start button defines the level parameters but the game only starts when the guess btn is clicked */
     const guessButton = document.getElementById('btn-guess');
     guessButton.addEventListener('click', () => {
+        level[3] = level[3] - 1;
         game(level);
-        numberOfAttempts--;
-        console.log(numberOfAttempts);
+        
+        displayAttemptsLeft(level[3]);
+        console.log(level[3]);
     });
     
 

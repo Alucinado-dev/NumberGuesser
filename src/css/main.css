@@ -13,6 +13,8 @@ h1{
 }
 
 #subtitle{
+    opacity: 0;
+    cursor: default;
     font-size: 3.6rem;
     color: var(--neon-yellow);
     text-shadow: 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue);
@@ -20,6 +22,7 @@ h1{
     text-align: center;
     padding: 1rem auto;
     margin: 2rem 0;
+    transition: all 500ms ease-in-out;
 }
 
 #start{
@@ -31,11 +34,9 @@ h1{
     align-items: center;
     transition: all 600ms ease-in-out;
     gap: 2rem;
-    
 }
 
 #start #btn-start{
-    display: block;
     padding: 4rem 8rem;
     border-radius: 30px;
     background-color: black;
@@ -77,12 +78,130 @@ h1{
     }
 }
 
+#start #levels-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    margin: 1rem auto;
+    
+}
+
+#start #levels-group .level{
+    cursor: pointer;
+    outline: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 2px solid transparent;
+    transition: all 300ms ease-in-out;
+    background-color: black;
+    width: 8rem;
+}
+
+#start #levels-group #level-easy{
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+    box-shadow: 0 0 10px  var(--neon-green), 0 0 20px var(--neon-green);
+
+    &:hover, &:focus{
+        border: 2px solid var(--neon-green);
+        transform: scale(1.1);
+    }
+
+    &:active, &.active{
+        border: 2px solid var(--neon-green);
+        transform: scale(0.9);
+        background: var(--cyan-green);
+        color:rgba(0, 0, 0, 0.8);
+        box-shadow: var(--shadow-for-cyan-green);
+        
+    }
+}
+
+#start #levels-group #level-medium{
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+    box-shadow: 0 0 10px  var(--neon-cyan), 0 0 20px var(--neon-cyan);
+
+    &:hover, &:focus{
+        border: 2px solid var(--neon-cyan);
+        transform: scale(1.1);
+    }
+
+    &:active, &.active{
+        border: 2px solid var(--neon-cyan);
+        transform: scale(0.9);
+        background: var(--blue-cyan);
+        color:rgba(0, 0, 0, 0.8);
+        box-shadow: var(--shadow-for-blue-cyan);
+    }
+}
+
+#start #levels-group #level-hard{
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+    box-shadow: 0 0 10px  var(--neon-blue), 0 0 20px var(--neon-blue);
+
+    &:hover, &:focus{
+        border: 2px solid var(--neon-blue);
+        transform: scale(1.1);
+    }
+
+    &:active, &.active{
+        border: 2px solid var(--neon-blue);
+        transform: scale(0.9);
+        background: var(--yellow-blue);
+        color:rgba(0, 0, 0, 0.8);
+        box-shadow: var(--shadow-for-yellow-blue);
+    }
+}
+
+#start #levels-group #level-expert{
+    color: var(--neon-orange);
+    text-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
+    box-shadow: 0 0 10px  var(--neon-orange), 0 0 20px var(--neon-orange);
+
+    &:hover, &:focus{
+        border: 2px solid var(--neon-orange);
+        transform: scale(1.1);
+    }
+
+    &:active, &.active{
+        border: 2px solid var(--neon-orange);
+        transform: scale(0.9);
+        background: var(--orange-yellow);
+        color:rgba(0, 0, 0, 0.8);
+        box-shadow: var(--shadow-for-orange-yellow);
+    }
+}
+
+#start #levels-group #level-supreme{
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
+    box-shadow: 0 0 10px  var(--neon-red), 0 0 20px var(--neon-red);
+
+    &:hover, &:focus{
+        border: 2px solid var(--neon-red);
+        transform: scale(1.1);
+    }
+
+    &:active, &.active{
+        border: 2px solid var(--neon-red);
+        transform: scale(0.9);
+        background: var(--red-orange);
+        color:rgba(0, 0, 0, 0.8);
+        box-shadow: var(--shadow-for-red-orange);
+    }
+}
+
 
 #guessing{
     display: none;
     justify-content: center;
     align-items: center;
     gap: 25rem;
+    transition: all 500ms ease-in-out;
 }
 
 #guessing .input-guess{
@@ -201,10 +320,10 @@ h1{
 }
 
 #guessing .attempts #attempts-message{
-    color: var(--neon-green);
+    color: white;
     font-size: 3.2rem;
     text-transform: uppercase;
-    text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+    text-shadow: 0 0 10px white, 0 0 20px white;
     text-align: center;
 }
 
@@ -238,15 +357,13 @@ h1{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+    background-clip: text;
     color: transparent;
     -webkit-background-clip: text; /* old browsers compatibility */
     -moz-background-clip: text; /* old browsers compatibility */
-    background-clip: text;
     font-size: 1.6rem;
-    text-shadow: var(--shadow-result);
     padding: 0.5rem;
     border-radius: 1rem;
-
     width: 100%;
     text-align: center;
 }
@@ -263,8 +380,8 @@ h1{
     padding: 4rem;
     border-radius: 2rem;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 100px;
+    left: 500px;;
     background-color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 0 10px black;
     z-index: 10;
