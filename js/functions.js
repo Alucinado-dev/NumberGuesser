@@ -2,7 +2,7 @@
 function hideCustomAlert() {
     const alert = document.getElementById('endgame-alert');
     alert.style.display = 'none';
-    reset();
+    
 }
 
 /* shows a customized alert with title image text sound and button */
@@ -40,14 +40,8 @@ function showCustomAlert(title, imageSource, text, buttonContent, buttonColor, s
 
     alertButton.addEventListener('click', () => hideCustomAlert());
     /* faça com que o hide tbm seja chamado quando se clica fora do container */
-    
-    alert.addEventListener('click', (event) => {
-        if (!(event.target === alert)) {
-            hideCustomAlert();
-        }
-    });
-    
-    console.log('isso será mostrado quando a showcustom alert for chamada')
+
+    reset();
 }
 
 /* generates a random number between min and max (min and max  included)  */
@@ -147,8 +141,18 @@ function reset(){
     attemptsLeft = 0;
     secretNumber = null;
     displayAttemptsLeft(attemptsLeft);
+
+    const subtitle = document.getElementById('subtitle');
+    subtitle.style.opacity = '0';
     
-    console.log('isso será mostrado quando o reset for chamado');
+    console.log(`
+        isso será mostrado quando o reset for chamado
+        nivel : ${level[0]}
+        minimo : ${level[1]}
+        maximo : ${level[2]}
+        tentativas : ${level[3]}
+        numero secreto : ${secretNumber}
+    `);
 }
 
 
@@ -175,7 +179,6 @@ function getGuessedNumber(min, max){
 /* defines the routine when the player wins the game */
 function gameWin(gameDifficulty, rightNumber){
     showCustomAlert('GOT IT !!!', 'src/images/got it.jpg', `You won at the ${gameDifficulty} level, the number was ${rightNumber} !!!!!`, 'PLAY AGAIN', 'var(--neon-green)',false);
-    reset();
 }
 
 /* chooses a color gradient based on how much is the distance */
@@ -228,7 +231,6 @@ function showFeedbackMessage(feedback, distance, guessedNumber ){
 function gameLost(secretNumber){
     showCustomAlert('YOU LOST', 'src/images/wrong.jpg',`you're out of attempts, the secret number was ${secretNumber}.`, 'TRY AGAIN', 'var(--neon-red)', false);
     console.log('isso será mostrado quando o player perder')
- 
 }
 
 

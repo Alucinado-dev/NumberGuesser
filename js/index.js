@@ -18,14 +18,17 @@
 - reset button : clear number of attempts and return to 2 step
 */
 
+/* declaring a variable level which will receive an array of information about what level the game should start 
+   it initializes as null in order to verify if  it will be receiving values on the current code 
+   as windows loads, runs levelSelector() in easy mode as default, active is in easy as default in index.HTML 
+*/
 
-let level = [null, null, null, null]; /* declaring a variable level which will receive an array of information about what level the game should start 
-                     it initializes as null in order to verify if  it will be receiving values on the current code 
-                     as windows loads, runs levelSelector() in easy mode as default, active is in easy as default in index.HTML 
-                    */
+let level = [null, null, null, null]; 
+const startButton = document.getElementById('btn-start');
+const guessButton = document.getElementById('btn-guess'); 
+const resetButton = document.getElementById('btn-reset');
 
 /* defines what happens when the start button is clicked */
-const startButton = document.getElementById('btn-start');
 startButton.addEventListener('click', () => {
     
     /* hides the start section and shows the guessing section */
@@ -47,26 +50,30 @@ startButton.addEventListener('click', () => {
     /* destructuring level */
     let [, min, max,] = level;
 
+    /* generating secret number */
     const secretNumber = Number(randomNumber(min, max));
-    console.log(secretNumber);
+
+    /* displaying initial attempts number */
+    displayAttemptsLeft(level[3]);
 
     /* stores the secretNumber in level  */
     level.push(secretNumber);
     console.log(level);
+}); 
 
-     /* the start button defines the level parameters but the game only starts when the guess btn is clicked */
-    const guessButton = document.getElementById('btn-guess');
-    guessButton.addEventListener('click', () => {
+/* the start button defines the level parameters but the game only starts when the guess btn is clicked */
+guessButton.addEventListener('click', () => {
+    /* prevents that the game continue if there's no attempts left */
+    if (level[3] !== null && level[3] > 0){
         level[3] = level[3] - 1;
         game(level);
-        
         displayAttemptsLeft(level[3]);
-        console.log(level[3]);
-    });
-    
+    }
+});
 
-
-}); 
+resetButton.addEventListener('click', () => {
+    reset();
+});
 
 /* toggle between buttons on which one has the class active */
 const buttonLevels = document.querySelectorAll('.level');
@@ -78,10 +85,6 @@ buttonLevels.forEach(button =>{
 })
 
 
-const resetButton = document.getElementById('btn-reset');
-resetButton.addEventListener('click', () => {
-    reset();
 
-});
 
 
