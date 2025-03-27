@@ -178,7 +178,7 @@ function getGuessedNumber(min, max){
 
 /* defines the routine when the player wins the game */
 function gameWin(gameDifficulty, rightNumber){
-    showCustomAlert('GOT IT !!!', 'src/images/got it.jpg', `You won at the ${gameDifficulty} level, the number was ${rightNumber} !!!!!`, 'PLAY AGAIN', 'var(--neon-green)',false);
+    showCustomAlert('GOT IT !!!', 'src/images/got it.jpg', `You won at ${gameDifficulty} level, the number was ${rightNumber} !!!!!`, 'PLAY AGAIN', 'var(--neon-green)',false);
 }
 
 /* chooses a color gradient based on how much is the distance */
@@ -245,7 +245,7 @@ function game([difficulty, min, max, attemptsLeft, secretNumber]) {
     if (secretNumber !== guessedNumber){
         
         if(attemptsLeft === 0){
-            console.log('isso será mostrando quando sobrar 0 tentativas')
+           
             gameLost(secretNumber);
             return;
            

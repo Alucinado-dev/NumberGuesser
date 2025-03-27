@@ -377,16 +377,20 @@ h1{
     align-items: center;
     flex-direction: column;
     gap: 3rem;
-    padding: 4rem;
+    padding: 6rem;
     border-radius: 2rem;
     position: fixed;
-    top: 100px;
-    left: 500px;;
-    background-color: rgba(0, 0, 0, 0.8);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: black;
     box-shadow: 0 0 10px black;
     z-index: 10;
     max-width: 90%;
     max-height: 90%;
+    border: var(--neon-pink) 5px solid;
+    box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
 }
 
 #endgame-alert #endgame-title{
@@ -395,8 +399,8 @@ h1{
 }
 
 #endgame-alert #endgame-image{
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
 }
 
 #endgame-alert #endgame-message{
