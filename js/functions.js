@@ -182,42 +182,45 @@ function gameWin(gameDifficulty, rightNumber){
 }
 
 /* chooses a color gradient based on how much is the distance */
-function choosecolor(distance){
-    if(distance > 500){
+function choosecolor(distance, range){
+    const coefficent = distance / range;
+    console.log(distance,range,coefficent)
+    if(coefficent > 0.5){
         const colorAndShadow = ['var(--red-orange)', 'var(--shadow-for-red-orange)'];
         return colorAndShadow
     }
 
-    if (distance > 100 ){
+    if (coefficent > 0.1){
         const colorAndShadow = ['var(--orange-yellow)', 'var(--shadow-for-orange-yellow)'];
         return colorAndShadow
     } 
     
-    if (distance > 50){
+    if (coefficent > 0.05){
         const colorAndShadow = ['var(--yellow-blue)', 'var(--shadow-for-yellow-blue)'];
         return colorAndShadow
     }
     
-    if (distance > 10){
+    if (coefficent > 0.01){
         const colorAndShadow = ['var(--blue-cyan)', 'var(--shadow-for-blue-cyan)'];
         return colorAndShadow
     }
     
-    if (distance <= 10){
+    if (coefficent <= 0.01){
         const colorAndShadow = ['var(--cyan-green)', 'var(--shadow-for-cyan-green)'];
         return colorAndShadow
     }
 }
 
 /* defines what will be the feedback  message for the last attempt */
-function showFeedbackMessage(feedback, distance, guessedNumber ){
+function showFeedbackMessage(feedback, distance, guessedNumber, min, max){
     const resultsList = document.getElementById('results-list');
     const newLi = document.createElement('li');
     newLi.innerHTML = `<p class="result-message"> wrong guess! ${guessedNumber} is ${feedback} the secret number! </p>`;
     
     resultsList.appendChild(newLi);
     /* chooses the color for the text of the attempt */
-    const [color, shadow] = choosecolor(distance);
+    const range = max - min + 1;
+    const [color, shadow] = choosecolor(distance, range);
  
     
     const feedbackMessage = newLi.querySelector('p');
@@ -238,13 +241,7 @@ function gameLost(secretNumber){
 function game([difficulty, min, max, attemptsLeft, secretNumber]) {
     const guessedNumber = getGuessedNumber(min, max);
 
-    console.log(` 
-        nivel : ${difficulty}
-        minimo : ${min}
-        maximo : ${max}
-        tentativas : ${attemptsLeft}
-        numero secreto : ${secretNumber}
-        `)
+
     if (secretNumber !== guessedNumber){
         
         if(attemptsLeft === 0){
@@ -256,12 +253,12 @@ function game([difficulty, min, max, attemptsLeft, secretNumber]) {
 
         if (secretNumber > guessedNumber){
             const distance = secretNumber - guessedNumber;
-            showFeedbackMessage('below', distance, guessedNumber);
+            showFeedbackMessage('below', distance, guessedNumber,min,max);
         }
 
         if (secretNumber < guessedNumber){
             const distance = guessedNumber - secretNumber;
-            showFeedbackMessage('above', distance, guessedNumber);
+            showFeedbackMessage('above', distance, guessedNumber,min,max);
         }
         
     } else {
