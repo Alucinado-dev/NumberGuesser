@@ -100,7 +100,7 @@ h1{
     border: 2px solid transparent;
     transition: all 300ms ease-in-out;
     background-color: black;
-    width: 10rem;
+    min-width: 100px;
     font-family: var(--btn-levels);
 
     &:active, &.active{
