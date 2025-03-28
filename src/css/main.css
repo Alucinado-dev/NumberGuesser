@@ -1,5 +1,6 @@
 main{
     padding: 4rem;
+    overflow: hidden;
 }
 
 h1{
@@ -21,7 +22,7 @@ h1{
     width: 100%;
     text-align: center;
     padding: 1rem auto;
-    margin: 2rem 0;
+    margin: 2rem 0 5rem 0;
     transition: all 500ms ease-in-out;
 }
 
@@ -96,7 +97,7 @@ h1{
     border: 2px solid transparent;
     transition: all 300ms ease-in-out;
     background-color: black;
-    width: 8rem;
+    width: 10rem;
 }
 
 #start #levels-group #level-easy{
@@ -233,10 +234,12 @@ h1{
     text-align: center;
     outline: none;
     transition: all 300ms ease-in-out;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
 
     &::placeholder{
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 0.7);
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &::-webkit-outer-spin-button,
@@ -328,7 +331,7 @@ h1{
 }
 
 #guessing .attempts #results-list{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -388,7 +391,7 @@ h1{
     box-shadow: 0 0 10px black;
     z-index: 10;
     max-width: 90%;
-    max-height: 90%;
+    max-height: 80%;
     border: var(--neon-pink) 5px solid;
     box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
 }

@@ -1,0 +1,52 @@
+@media screen and (max-width: 1024px) {
+    #guessing{
+        gap: 10rem;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    :root{
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width: 540px)  {
+    :root{
+        font-size: 40%;
+    }
+
+    #subtitle{
+        font-size: 2.4rem;
+        margin: 2rem 0;
+        opacity: 1;
+    }
+    #levels-group{
+        flex-direction: column;
+    }
+
+    #guessing{
+        margin-top: 12rem;
+        flex-direction: column;
+    }
+    
+    #guessing .attempts #results-list{
+        max-height: 50px;
+    }
+    
+    #endgame-alert #endgame-image{
+        width: 200px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root{
+        font-size: 30%;;
+    }
+
+    #endgame-alert #endgame-image{
+        width: 150px;
+        height: 100px;
+    }
+}

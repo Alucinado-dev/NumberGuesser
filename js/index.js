@@ -69,6 +69,9 @@ guessButton.addEventListener('click', () => {
         game(level);
         displayAttemptsLeft(level[3]);
     }
+
+    const inputNumber = document.getElementById('guess');
+    inputNumber.value = '';
 });
 
 resetButton.addEventListener('click', () => {

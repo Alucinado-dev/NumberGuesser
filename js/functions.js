@@ -3,6 +3,10 @@ function hideCustomAlert() {
     const alert = document.getElementById('endgame-alert');
     alert.style.display = 'none';
     
+    const main = document.querySelector('main');
+    main.style.opacity = '1';
+
+    
 }
 
 /* shows a customized alert with title image text sound and button */
@@ -34,7 +38,10 @@ function showCustomAlert(title, imageSource, text, buttonContent, buttonColor, s
     alertButton.style.boxShadow = `0 0 10px ${buttonColor}`
     
     if(soundSource){
-        const audio = new Audio(soundSource);
+        const audio = new Audio('src/audios/Tuturu sound effect.mp3');
+        audio.play();
+    } else{
+        const audio = new Audio('src/audios/Lose sound effects.mp3');
         audio.play();
     }
 
@@ -42,6 +49,11 @@ function showCustomAlert(title, imageSource, text, buttonContent, buttonColor, s
     /* faça com que o hide tbm seja chamado quando se clica fora do container */
 
     reset();
+
+    const main = document.querySelector('main');
+    main.style.opacity = '0.3';
+  
+    
 }
 
 /* generates a random number between min and max (min and max  included)  */
@@ -82,13 +94,13 @@ function levelSelector(){
     const supremeButton = document.getElementById('level-supreme');
 
     if(isActive(easyButton)){
-        const [difficulty, min, max, numberOfAttempts] = ['an easy', 1, 10, 10];
+        const [difficulty, min, max, numberOfAttempts] = ['an easy', 1, 10, 5];
         setDifficultyToSubtitle(difficulty, min, max, numberOfAttempts);
         return [difficulty, min, max, numberOfAttempts];  
     }
 
     if(isActive(mediumButton)){
-        const [difficulty, min, max, numberOfAttempts] = ['a medium', 1, 50, 10];
+        const [difficulty, min, max, numberOfAttempts] = ['a medium', 1, 50, 7];
         setDifficultyToSubtitle(difficulty, min, max, numberOfAttempts);
         return [difficulty, min, max, numberOfAttempts]
     }
@@ -130,6 +142,7 @@ function reset(){
     inputNumber.value = '';
     const resultsList = document.getElementById('results-list');
     resultsList.innerHTML = '';
+    resultsList.style.display = 'none';
     
     const start = document.getElementById('start');
     start.style.display = 'flex';
@@ -178,7 +191,7 @@ function getGuessedNumber(min, max){
 
 /* defines the routine when the player wins the game */
 function gameWin(gameDifficulty, rightNumber){
-    showCustomAlert('GOT IT !!!', 'src/images/got it.jpg', `You won at ${gameDifficulty} level, the number was ${rightNumber} !!!!!`, 'PLAY AGAIN', 'var(--neon-green)',false);
+    showCustomAlert('GOT IT !!!', 'src/images/got it.jpg', `You won at ${gameDifficulty} level, the number was ${rightNumber} !!!!!`, 'PLAY AGAIN', 'var(--neon-green)',true);
 }
 
 /* chooses a color gradient based on how much is the distance */
@@ -217,6 +230,12 @@ function showFeedbackMessage(feedback, distance, guessedNumber, min, max){
     const newLi = document.createElement('li');
     newLi.innerHTML = `<p class="result-message"> wrong guess! ${guessedNumber} is ${feedback} the secret number! </p>`;
     
+    if(resultsList.style.display = 'none'){
+        resultsList.style.display = 'flex';
+    }
+
+    
+
     resultsList.appendChild(newLi);
     /* chooses the color for the text of the attempt */
     const range = max - min + 1;
