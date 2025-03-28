@@ -18,10 +18,13 @@ function showCustomAlert(title, imageSource, text, buttonContent, buttonColor, s
     const alertButton = document.getElementById('endgame-button');
     
     alert.style.display = 'flex';
+    alert.style.border = `5px solid ${buttonColor}`;
+    alert.style.boxShadow = `0 0 10px ${buttonColor}, 0 0 20px ${buttonColor}, 0 0 30px ${buttonColor}`;
+    
 
     alertTitle.textContent = title;
     alertTitle.style.color = buttonColor;
-    alertTitle.style.textShadow = `0 0 10px ${buttonColor}`;
+    alertTitle.style.textShadow = `0 0 10px ${buttonColor}, 0 0 20px ${buttonColor}`;
     
 
     if (imageSource){
@@ -41,12 +44,12 @@ function showCustomAlert(title, imageSource, text, buttonContent, buttonColor, s
         const audio = new Audio('src/audios/Tuturu sound effect.mp3');
         audio.play();
     } else{
-        const audio = new Audio('src/audios/Lose sound effects.mp3');
+        const audio = new Audio('src/audios/Uh sound effect.opus');
         audio.play();
     }
 
     alertButton.addEventListener('click', () => hideCustomAlert());
-    /* faça com que o hide tbm seja chamado quando se clica fora do container */
+
 
     reset();
 
@@ -158,14 +161,6 @@ function reset(){
     const subtitle = document.getElementById('subtitle');
     subtitle.style.opacity = '0';
     
-    console.log(`
-        isso será mostrado quando o reset for chamado
-        nivel : ${level[0]}
-        minimo : ${level[1]}
-        maximo : ${level[2]}
-        tentativas : ${level[3]}
-        numero secreto : ${secretNumber}
-    `);
 }
 
 
@@ -197,7 +192,6 @@ function gameWin(gameDifficulty, rightNumber){
 /* chooses a color gradient based on how much is the distance */
 function choosecolor(distance, range){
     const coefficent = distance / range;
-    console.log(distance,range,coefficent)
     if(coefficent > 0.5){
         const colorAndShadow = ['var(--red-orange)', 'var(--shadow-for-red-orange)'];
         return colorAndShadow

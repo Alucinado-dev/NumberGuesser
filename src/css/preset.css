@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'cyberway riders';
+    src: url('/src/fonts/cyberway_riders/Cyberway Riders.otf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'neuropol';
+    src: url(/src/fonts/neuropol/Neuropol.otf);
+}
 
 :root{
     /* color pallete */
@@ -28,10 +38,17 @@
     --shadow-for-blue-cyan: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-blue);
     --shadow-for-cyan-green: 0 0 5px var(--neon-green), 0 0 10px var(--neon-cyan);
     
-    
-
-
-    
+    /* fonts */
+    --title :  'neuropol', sans-serif;
+    --subtitle: "Rajdhani", sans-serif;
+    --btn-start: 'cyberway riders', sans-serif;
+    --btn-levels: "Exo", sans-serif;
+    --btn-guess-reset: "Oxanium", sans-serif;
+    --attempts-title: "Share Tech Mono", monospace;
+    --attempts-feedback: "VT323", monospace;
+    --alert-title: "Audiowide", sans-serif;
+    --alert-message: "Orbitron", sans-serif;
+    --alert-button: "Space Mono", monospace;
 }
 
 
